@@ -117,6 +117,9 @@ sub init_meta {
             class => ['Parse::FixedRecord::Meta::Role::Class'],
         },
     );
+
+    my $meta = Class::MOP::class_of($args{for_class});
+    $meta->superclasses('Parse::FixedRecord::Row');
 }
 
 sub pic {

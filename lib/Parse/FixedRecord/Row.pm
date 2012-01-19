@@ -35,7 +35,7 @@ parsers.
 
 =cut
 
-use Parse::FixedRecord;
+use Moose;
 use Parse::FixedRecord::Column;
 
 use Moose::Util::TypeConstraints;
