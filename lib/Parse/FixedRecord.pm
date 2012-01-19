@@ -101,32 +101,46 @@ use Moose::Util::TypeConstraints;
 our $VERSION = 0.02;
 
 Moose::Exporter->setup_import_methods(
-   with_caller => ['column', 'pic'],
-   also        => ['Moose' ],
+    with_meta => ['column', 'pic'],
+    also      => ['Moose'],
 );
 
+sub init_meta {
+    shift;
+    my %args = @_;
+
+    Moose->init_meta(%args);
+
+    Moose::Util::MetaRole::apply_metaroles(
+        for => $args{for_class},
+        class_metaroles => {
+            class => ['Parse::FixedRecord::Meta::Role::Class'],
+        },
+    );
+}
+
 sub pic {
-    my $caller = shift;
+    my $meta = shift;
     my $pic = shift;
 
-    $caller->add_field($pic);
+    $meta->add_field($pic);
 }
 
 sub column {
-    my $caller = shift;
+    my $meta = shift;
     my ($name, %pars) = @_;
     $pars{isa} ||= 'Str';
     $pars{coerce}++ if do {
         my $t = find_type_constraint($pars{isa});
         $t && $t->has_coercion;
         };
-    my $attr = $caller->meta->add_attribute(
+    my $attr = $meta->add_attribute(
         $name => (
             traits => ['Column'],
             is     => 'ro',
             %pars,
             ));
-    $caller->add_field($attr);
+    $meta->add_field($attr);
 }
 
 =head1 AUTHOR and LICENSE
