@@ -15,7 +15,6 @@ To create a parser:
 
   package My::Parser;
   use Parse::FixedRecord; # imports strict and warnings
-  extends 'Parse::FixedRecord::Row';
 
   column first_name => width => 4, isa => 'Str';
   pic ' ';
