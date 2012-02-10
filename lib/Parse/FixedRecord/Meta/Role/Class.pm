@@ -33,6 +33,12 @@ Parse::FixedRecord::Meta::Role::Class - metaclass trait for FixedRecord parsers
 
 Stores metadata about the parser. 
 
+=head1 METHODS
+
+=head2 total_length
+
+Returns the total length of the string that will be parsed.
+
 =head1 AUTHOR and LICENSE
 
     osfameron@cpan.org - see Parse::FixedRecord for full details and copyright
