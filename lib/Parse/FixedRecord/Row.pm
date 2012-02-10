@@ -26,7 +26,7 @@ on each individual parser type having well behaved String overloading!
 
 =head2 Types
 
-::Row declares C<Duration> and C<DateTime> types for you to use in your
+::Row declares C<Duration> and C<Date> types for you to use in your
 parsers.
 
 =head1 AUTHOR and LICENSE
