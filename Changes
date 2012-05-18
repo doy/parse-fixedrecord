@@ -1,6 +1,8 @@
 Revision history for Parse-FixedRecord
 
 {{$NEXT}}
+
+0.06  2012-05-17
       - add 'ignore' command
       - dzilify
 
