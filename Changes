@@ -1,6 +1,8 @@
 Revision history for Parse-FixedRecord
 
 {{$NEXT}}
+      - add 'ignore' command
+      - dzilify
 
 0.05  2012-02-09
       - Make the error messages more informative
