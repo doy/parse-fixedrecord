@@ -1,6 +1,7 @@
 package Parse::FixedRecord::Column;
 use Moose::Role;
 use Moose::Util::TypeConstraints;
+# ABSTRACT: trait for FixedRecord columns
 
 has width => (
     is        => 'ro',
@@ -11,10 +12,6 @@ sub Moose::Meta::Attribute::Custom::Trait::Column::register_implementation {
     'Parse::FixedRecord::Column' 
 };
 
-=head1 NAME
-
-Parse::FixedRecord::Column - trait for FixedRecord columns
-
 =head1 DESCRIPTION
 
 Responsible for declaring the C<width> column.
@@ -22,10 +19,6 @@ Responsible for declaring the C<width> column.
 =head3 C<register_implementation>
 
 Declares the trait alias C<Column>.
-
-=head1 AUTHOR and LICENSE
-
-    osfameron@cpan.org - see Parse::FixedRecord for full details and copyright
 
 =cut
 

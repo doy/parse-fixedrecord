@@ -1,8 +1,5 @@
 package Parse::FixedRecord::Row;
-
-=head1 NAME
-
-Parse::FixedRecord::Row - Row class for Parse::FixedRecord
+# ABSTRACT: Row class for Parse::FixedRecord
 
 =head1 DESCRIPTION
 
@@ -28,10 +25,6 @@ on each individual parser type having well behaved String overloading!
 
 ::Row declares C<Duration> and C<Date> types for you to use in your
 parsers.
-
-=head1 AUTHOR and LICENSE
-
-    osfameron@cpan.org - see Parse::FixedRecord for full details
 
 =cut
 

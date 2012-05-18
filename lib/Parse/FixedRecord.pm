@@ -1,8 +1,5 @@
 package Parse::FixedRecord;
-
-=head1 NAME
-
-Parse::FixedRecord - object oriented parser for fixed width records
+# ABSTRACT: object oriented parser for fixed width records
 
 =head1 SYNOPSIS
 
@@ -101,12 +98,10 @@ Otherwise, an error is thrown, usually by the Moose type constraint failure.
 
 =cut
 
-use Moose ();
+use Moose 1.15 ();
 use Parse::FixedRecord::Column;
 use Moose::Exporter;
 use Moose::Util::TypeConstraints;
-
-our $VERSION = 0.05;
 
 Moose::Exporter->setup_import_methods(
     with_meta => ['column', 'pic', 'ignore'],
@@ -175,14 +170,11 @@ sub ignore {
     $meta->add_field($attr);
 }
 
-=head1 AUTHOR and LICENSE
+=begin Pod::Coverage
 
-   (C)  osfameron 2009, <osfameron@cpan.org>
+init_meta
 
-For support, try emailing me, or grabbing me on irc #london.pm or #moose
-on irc.perl.org
-
-This module is released under the same terms as Perl itself.
+=end Pod::Coverage
 
 =cut
 

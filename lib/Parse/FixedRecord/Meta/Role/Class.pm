@@ -1,6 +1,7 @@
 package Parse::FixedRecord::Meta::Role::Class;
 use Moose::Role;
 use Moose::Util::TypeConstraints;
+# ABSTRACT: metaclass trait for FixedRecord parsers
 
 use List::Util 'sum';
 
@@ -25,10 +26,6 @@ sub total_length {
 no Moose::Role;
 no Moose::Util::TypeConstraints;
 
-=head1 NAME
-
-Parse::FixedRecord::Meta::Role::Class - metaclass trait for FixedRecord parsers
-
 =head1 DESCRIPTION
 
 Stores metadata about the parser. 
@@ -38,10 +35,6 @@ Stores metadata about the parser.
 =head2 total_length
 
 Returns the total length of the string that will be parsed.
-
-=head1 AUTHOR and LICENSE
-
-    osfameron@cpan.org - see Parse::FixedRecord for full details and copyright
 
 =cut
 
