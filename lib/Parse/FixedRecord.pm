@@ -79,6 +79,15 @@ and in any case, there is no requirement to use it.
 i.e. the record consists of two 5-char wide fields, split by the literal 
 C<' | '>.
 
+=head3 C<ignore>
+
+Like C<pic>, but the actual contents of the delimiter are ignored. The
+argument is the field width.
+
+  column foo => width => 5;
+  ignore 3;
+  column bar => width => 5;
+
 =head2 Parsing
 
 =head3 C<$parser-E<gt>parse>
@@ -100,7 +109,7 @@ use Moose::Util::TypeConstraints;
 our $VERSION = 0.05;
 
 Moose::Exporter->setup_import_methods(
-    with_meta => ['column', 'pic'],
+    with_meta => ['column', 'pic', 'ignore'],
     also      => ['Moose'],
 );
 
@@ -140,6 +149,27 @@ sub column {
         $name => (
             traits => ['Column'],
             is     => 'ro',
+            %pars,
+            ));
+    $meta->add_field($attr);
+}
+
+my $anon_idx = 0;
+
+sub ignore {
+    my $meta = shift;
+    my %pars = (@_ % 2 ? (width => @_) : @_);
+    $pars{isa} ||= 'Str';
+    $pars{coerce}++ if do {
+        my $t = find_type_constraint($pars{isa});
+        $t && $t->has_coercion;
+        };
+    my $name = "Parse-FixedRecord-ANON-$anon_idx";
+    $anon_idx++;
+    my $attr = $meta->add_attribute(
+        $name => (
+            traits => ['Column'],
+            is     => 'bare',
             %pars,
             ));
     $meta->add_field($attr);
